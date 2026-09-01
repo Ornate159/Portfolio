@@ -22,11 +22,11 @@ const Skills = () => {
             className="rounded-xl border border-neutral-800 p-6"
           >
             <h3 className="mb-4 font-semibold text-purple-100">{group.category}</h3>
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap gap-2">
               {group.items.map((item, itemIndex) => (
                 <span
                   key={itemIndex}
-                  className="mr-2 mb-2 rounded bg-neutral-900 px-2 py-1 text-sm font-medium text-purple-300"
+                  className="whitespace-nowrap rounded border border-neutral-800 bg-neutral-900 px-3 py-1 text-sm font-medium text-purple-300"
                 >
                   {item}
                 </span>
