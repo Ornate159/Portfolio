@@ -30,6 +30,7 @@ const Projects = () => {
       >
         {PROJECTS.map((project, index) => (
           <div key={index} className="mb-8 flex flex-wrap lg:justify-center">
+            {project.images.length > 0 && (
             <motion.div
               className="w-full lg:w-1/2" // Increased width by 2 times
               style={{
@@ -57,6 +58,7 @@ const Projects = () => {
                 />
               ))}
             </motion.div>
+            )}
             <motion.div
               whileInView={{ opacity: 1, x: 0 }}
               initial={{ opacity: 0, x: 200 }}
@@ -64,7 +66,20 @@ const Projects = () => {
               className="w-full max-w-xl lg:w-3/4"
             >
               <h6 className="mb-2 font-semibold text-lg">{project.title}</h6>
+              {project.subtitle && (
+                <p className="mb-2 text-sm text-neutral-500">{project.subtitle}</p>
+              )}
               <p className="mb-4 text-neutral-400">{project.description}</p>
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mb-4 inline-block border-b border-purple-400 text-sm text-purple-300 transition-colors duration-300 hover:text-purple-100"
+                >
+                  {project.linkLabel || "View project"}
+                </a>
+              )}
               <div className="flex flex-wrap overflow-x-auto">
                 {project.technologies.map((tech, index) => (
                   <motion.span

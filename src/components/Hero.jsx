@@ -1,4 +1,4 @@
-import { HERO_CONTENT } from "../constants";
+import { HERO_CONTENT, HERO_ROLE } from "../constants";
 import profilePic from "../assets/raoProfile.png";
 import cvFile from "../assets/raoCv.pdf"; // Importing the CV file
 import { FaDownload } from "react-icons/fa"; // Importing the download icon from Font Awesome
@@ -37,7 +37,7 @@ const Hero = () => {
               animate="visible"
               className="bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text text-3xl tracking-tight text-transparent mb-4"
             >
-              Full Stack Developer
+              {HERO_ROLE}
             </motion.span>
             <motion.p
               variants={container(1)}
@@ -48,7 +48,6 @@ const Hero = () => {
               {HERO_CONTENT}
             </motion.p>
             {/* Download button for CV */}
-            <a href={cvFile} download>
             <a href={cvFile} download>
   <motion.button
     variants={container(1.5)} // Use the same motion variants for consistency
@@ -67,7 +66,6 @@ const Hero = () => {
     Download CV
   </motion.button>
 </a>
-            </a>
           </div>
         </div>
         <div className="w-full lg:w-1/2 lg:p-8">
