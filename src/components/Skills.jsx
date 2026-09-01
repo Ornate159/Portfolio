@@ -1,33 +1,27 @@
-import { SKILLS } from "../constants";
 import { motion } from "framer-motion";
+import Section from "./Section";
+import { SKILLS } from "../constants";
 
 const Skills = () => {
   return (
-    <div className="border-b border-neutral-900 pb-4">
-      <motion.h2
-        whileInView={{ opacity: 1, y: 0 }}
-        initial={{ opacity: 0, y: -100 }}
-        transition={{ duration: 0.5 }}
-        className="my-20 text-center text-4xl"
-      >
-        Skills
-      </motion.h2>
-      <div className="grid gap-6 lg:grid-cols-2">
+    <Section id="skills" eyebrow="What I bring" title="Skills">
+      <div className="grid gap-5 md:grid-cols-2">
         {SKILLS.map((group, index) => (
           <motion.div
-            key={index}
+            key={group.category}
             whileInView={{ opacity: 1, y: 0 }}
-            initial={{ opacity: 0, y: 40 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            className="rounded-xl border border-neutral-800 p-6"
+            initial={{ opacity: 0, y: 30 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, delay: (index % 2) * 0.1 }}
+            className="glass-card group p-6"
           >
-            <h3 className="mb-4 font-semibold text-purple-100">{group.category}</h3>
+            <div className="mb-5 flex items-center gap-3">
+              <span className="h-8 w-1 rounded-full bg-gradient-to-b from-violet-400 to-fuchsia-400" />
+              <h3 className="font-display text-lg font-semibold text-white">{group.category}</h3>
+            </div>
             <div className="flex flex-wrap gap-2">
-              {group.items.map((item, itemIndex) => (
-                <span
-                  key={itemIndex}
-                  className="whitespace-nowrap rounded border border-neutral-800 bg-neutral-900 px-3 py-1 text-sm font-medium text-purple-300"
-                >
+              {group.items.map((item) => (
+                <span key={item} className="chip">
                   {item}
                 </span>
               ))}
@@ -35,7 +29,7 @@ const Skills = () => {
           </motion.div>
         ))}
       </div>
-    </div>
+    </Section>
   );
 };
 

@@ -1,39 +1,32 @@
+import { motion } from "framer-motion";
+import { FaGraduationCap } from "react-icons/fa";
+import Section from "./Section";
 import { EDUCATION } from "../constants";
-import { motion } from "framer-motion"
 
 const Education = () => {
   return (
-    <div className="border-b border-neutral-900 pb-4">
-      <motion.h1
-      whileInView={{ opacity: 1, y: 0 }}
-      initial={{ opacity:0, y: -100 }}
-      transition={{ duration: 0.5 }}
-      className="my-20 text-center text-4xl">Education</motion.h1>
-      <div>
+    <Section id="education" eyebrow="Where I studied" title="Education">
+      <div className="grid gap-5 lg:grid-cols-3">
         {EDUCATION.map((education, index) => (
-          <div key={index} className="flex mb-4">
-            <motion.div 
-            whileInView={{ opacity: 1, x: 0 }}
-            initial={{ opacity:0, x: -100 }}
-            transition={{ duration: 1 }}
-            className="w-full lg:w-1/4">
-              <p className="mb-2 text-sm text-neutral-400">{education.year}</p>
-            </motion.div>
-            <motion.div
-            whileInView={{ opacity: 1, x: 0 }}
-            initial={{ opacity:0, x: 100 }}
-            transition={{ duration: 1 }}
-            className="w-full max-w-xl lg:w-3/4">
-              <div className="mb-2 font-semibold">
-                <p className="text-purple-100">{education.institution}</p>
-                <p>{education.subject}</p>
-              </div>
-              <p className="mb-4 text-neutral-400">{education.result}</p>
-            </motion.div>
-          </div>
+          <motion.div
+            key={education.institution}
+            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="glass-card flex flex-col p-6"
+          >
+            <div className="mb-5 flex items-center justify-between">
+              <FaGraduationCap className="text-2xl text-violet-300" />
+              <span className="text-xs text-neutral-500">{education.year}</span>
+            </div>
+            <h3 className="font-display text-lg font-semibold text-white">{education.subject}</h3>
+            <p className="mt-2 text-sm text-neutral-400">{education.institution}</p>
+            <p className="mt-auto pt-5 text-sm font-medium text-violet-200">{education.result}</p>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </Section>
   );
 };
 

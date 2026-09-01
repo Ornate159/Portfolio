@@ -12,6 +12,29 @@ import project2Image5 from "../assets/projects/project-2-image5.png";
 
 export const HERO_ROLE = "Clinical AI Specialist";
 
+export const NAV_LINKS = [
+  { label: "Experience", href: "#experience" },
+  { label: "Skills", href: "#skills" },
+  { label: "Toolbox", href: "#toolbox" },
+  { label: "Education", href: "#education" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
+];
+
+export const SOCIALS = {
+  linkedin: "https://www.linkedin.com/in/ra-ornate/",
+  github: "https://github.com/Ornate159",
+  facebook: "https://www.facebook.com/ornate.ahmed/",
+  instagram: "https://www.instagram.com/reeyad_ahmed_ornate/",
+};
+
+export const STATS = [
+  { value: "20+", label: "Months in AI quality ops" },
+  { value: "15-50", label: "Records finalized per shift" },
+  { value: "94%", label: "Thesis model accuracy" },
+  { value: "0", label: "Negative incidents" },
+];
+
 export const HERO_CONTENT = `Computer Science graduate with 20 months of professional experience in AI-assisted content review, quality operations, and compliance documentation at a US-based healthcare technology company. I evaluate LLM output for accuracy, surface recurring error patterns, and turn them into documentation and enablement that teams actually use — all within HIPAA-aligned frameworks. Currently expanding into data analytics with SQL, Excel, and Power BI.`;
 
 export const EXPERIENCES = [

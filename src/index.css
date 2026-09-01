@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,4 +6,58 @@
 
 :root {
   font-family: "Inter", sans-serif;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+body {
+  background-color: #07070a;
+}
+
+::selection {
+  background-color: rgba(167, 139, 250, 0.35);
+  color: #f5f3ff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #07070a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a33;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f4d;
+}
+
+@layer components {
+  .glass-card {
+    @apply rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm transition-colors duration-300;
+  }
+
+  .glass-card:hover {
+    @apply border-violet-400/30 bg-white/[0.05];
+  }
+
+  .chip {
+    @apply whitespace-nowrap rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-sm text-neutral-300 transition-colors duration-300;
+  }
+
+  .chip:hover {
+    @apply border-violet-400/40 text-violet-200;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-violet-300 via-fuchsia-300 to-sky-300 bg-clip-text text-transparent;
+  }
 }
