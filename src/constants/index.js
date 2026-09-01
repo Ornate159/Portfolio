@@ -12,6 +12,13 @@ import project2Image5 from "../assets/projects/project-2-image5.png";
 
 export const HERO_ROLE = "Clinical AI Specialist";
 
+export const HERO_ROTATING = [
+  "LLM output quality",
+  "HIPAA-aligned documentation",
+  "Process enablement",
+  "Data analytics",
+];
+
 export const NAV_LINKS = [
   { label: "Experience", href: "#experience" },
   { label: "Skills", href: "#skills" },

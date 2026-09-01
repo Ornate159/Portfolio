@@ -8,12 +8,28 @@ import { NAV_LINKS, SOCIALS } from "../constants";
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const sections = NAV_LINKS.map((link) => document.querySelector(link.href)).filter(Boolean);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActive(`#${visible.target.id}`);
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.25, 0.5, 1] }
+    );
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -34,9 +50,18 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              className="rounded-full px-3 py-1.5 text-sm text-neutral-400 transition-colors duration-200 hover:bg-white/5 hover:text-white"
+              className={`relative rounded-full px-3 py-1.5 text-sm transition-colors duration-200 hover:text-white ${
+                active === link.href ? "text-white" : "text-neutral-400"
+              }`}
             >
-              {link.label}
+              {active === link.href && (
+                <motion.span
+                  layoutId="nav-active"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  className="absolute inset-0 rounded-full border border-white/10 bg-white/[0.07]"
+                />
+              )}
+              <span className="relative">{link.label}</span>
             </a>
           ))}
         </div>

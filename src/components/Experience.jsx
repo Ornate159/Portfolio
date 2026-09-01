@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Section from "./Section";
+import SpotlightCard from "./SpotlightCard";
 import { EXPERIENCES } from "../constants";
 
 const Experience = () => {
@@ -16,7 +17,7 @@ const Experience = () => {
             className="relative mb-10 last:mb-0"
           >
             <span className="absolute -left-[1.9rem] top-2 h-3 w-3 rounded-full border-2 border-[#07070a] bg-violet-400 lg:-left-[2.9rem]" />
-            <div className="glass-card p-6 lg:p-8">
+            <SpotlightCard className="p-6 lg:p-8">
               <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
                 <h3 className="font-display text-xl font-semibold text-white">
                   {experience.role}
@@ -34,7 +35,7 @@ const Experience = () => {
                   </span>
                 ))}
               </div>
-            </div>
+            </SpotlightCard>
           </motion.div>
         ))}
       </div>

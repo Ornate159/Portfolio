@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
 import Section from "./Section";
+import SpotlightCard from "./SpotlightCard";
 import { SKILLS } from "../constants";
 
 const Skills = () => {
@@ -7,13 +7,13 @@ const Skills = () => {
     <Section id="skills" eyebrow="What I bring" title="Skills">
       <div className="grid gap-5 md:grid-cols-2">
         {SKILLS.map((group, index) => (
-          <motion.div
+          <SpotlightCard
             key={group.category}
             whileInView={{ opacity: 1, y: 0 }}
             initial={{ opacity: 0, y: 30 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5, delay: (index % 2) * 0.1 }}
-            className="glass-card group p-6"
+            className="p-6"
           >
             <div className="mb-5 flex items-center gap-3">
               <span className="h-8 w-1 rounded-full bg-gradient-to-b from-violet-400 to-fuchsia-400" />
@@ -26,7 +26,7 @@ const Skills = () => {
                 </span>
               ))}
             </div>
-          </motion.div>
+          </SpotlightCard>
         ))}
       </div>
     </Section>

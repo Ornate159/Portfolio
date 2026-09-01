@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import Section from "./Section";
+import SpotlightCard from "./SpotlightCard";
 import { PROJECTS } from "../constants";
 
 const Projects = () => {
@@ -8,13 +8,13 @@ const Projects = () => {
     <Section id="projects" eyebrow="What I built" title="Projects">
       <div className="space-y-8">
         {PROJECTS.map((project, index) => (
-          <motion.article
+          <SpotlightCard
             key={project.title}
             whileInView={{ opacity: 1, y: 0 }}
             initial={{ opacity: 0, y: 40 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6 }}
-            className="glass-card overflow-hidden p-6 lg:p-8"
+            className="p-6 lg:p-8"
           >
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
@@ -75,7 +75,7 @@ const Projects = () => {
                 ))}
               </div>
             )}
-          </motion.article>
+          </SpotlightCard>
         ))}
       </div>
     </Section>

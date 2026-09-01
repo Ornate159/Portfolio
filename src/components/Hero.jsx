@@ -1,6 +1,8 @@
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaDownload, FaArrowRight } from "react-icons/fa";
-import { HERO_CONTENT, HERO_ROLE, STATS } from "../constants";
+import Counter from "./Counter";
+import { HERO_CONTENT, HERO_ROLE, HERO_ROTATING, STATS } from "../constants";
 import profilePic from "../assets/raoPic.jpg";
 import cvFile from "../assets/raoCv.pdf";
 
@@ -14,6 +16,16 @@ const fadeUp = (delay) => ({
 });
 
 const Hero = () => {
+  const [rotatingIndex, setRotatingIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(
+      () => setRotatingIndex((index) => (index + 1) % HERO_ROTATING.length),
+      2600
+    );
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section id="top" className="pt-32 lg:pt-40">
       <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_1fr]">
@@ -51,6 +63,29 @@ const Hero = () => {
             {HERO_ROLE} <span className="text-neutral-600">/</span>{" "}
             <span className="text-neutral-400">Dhaka, Bangladesh</span>
           </motion.p>
+
+          <motion.div
+            variants={fadeUp(0.25)}
+            initial="hidden"
+            animate="visible"
+            className="mt-3 flex h-7 items-center gap-2 text-sm text-neutral-500"
+          >
+            <span>Focused on</span>
+            <span className="relative inline-flex h-7 items-center overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={HERO_ROTATING[rotatingIndex]}
+                  initial={{ y: 16, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -16, opacity: 0 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  className="font-medium text-violet-200"
+                >
+                  {HERO_ROTATING[rotatingIndex]}
+                </motion.span>
+              </AnimatePresence>
+            </span>
+          </motion.div>
 
           <motion.p
             variants={fadeUp(0.3)}
@@ -91,8 +126,13 @@ const Hero = () => {
             className="mt-12 grid max-w-xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/5 sm:grid-cols-4"
           >
             {STATS.map((stat) => (
-              <div key={stat.label} className="bg-[#08080c] px-4 py-5">
-                <dt className="font-display text-2xl font-semibold text-white">{stat.value}</dt>
+              <div
+                key={stat.label}
+                className="bg-[#08080c] px-4 py-5 transition-colors duration-300 hover:bg-white/[0.04]"
+              >
+                <dt className="font-display text-2xl font-semibold text-white">
+                  <Counter value={stat.value} />
+                </dt>
                 <dd className="mt-1 text-xs leading-snug text-neutral-500">{stat.label}</dd>
               </div>
             ))}

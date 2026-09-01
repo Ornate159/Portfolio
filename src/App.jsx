@@ -1,4 +1,6 @@
 import Background from './components/Background'
+import CursorGlow from './components/CursorGlow'
+import ScrollProgress from './components/ScrollProgress'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Experience from './components/Experience'
@@ -13,6 +15,8 @@ const App = () => {
   return (
     <div className="overflow-x-hidden text-neutral-300 antialiased">
       <Background />
+      <CursorGlow />
+      <ScrollProgress />
       <Navbar />
       <main className="mx-auto max-w-6xl px-6 lg:px-8">
         <Hero />
