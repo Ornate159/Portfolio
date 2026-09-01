@@ -1,5 +1,5 @@
 import { HERO_CONTENT, HERO_ROLE } from "../constants";
-import profilePic from "../assets/raoProfile.png";
+import profilePic from "../assets/raoPic.jpg";
 import cvFile from "../assets/raoCv.pdf"; // Importing the CV file
 import { FaDownload } from "react-icons/fa"; // Importing the download icon from Font Awesome
 import { motion } from "framer-motion";
@@ -76,7 +76,7 @@ const Hero = () => {
               transition={{ duration: 1, delay: 1.2 }}
               src={profilePic}
               alt="Reeyad Ahmed Ornate"
-              className="rounded-2xl"
+              className="w-full max-w-md rounded-2xl object-cover"
             />
           </div>
         </div>
